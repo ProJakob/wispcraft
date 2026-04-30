@@ -40,6 +40,10 @@ export function setWispUrl(wisp: string) {
 	wispUrl = wispUrlUrl.href;
 }
 
+export function showSettingsUI() {
+	showUI();
+}
+
 wispUrl =
 	((window as any).anura && (window as any).anura.wsproxyURL) ||
 	new URL(window.location.href).searchParams.get("wisp") ||
@@ -73,13 +77,6 @@ if (localStorage["wispcraft_accounts"]) {
 		})();
 	}
 }
-
-Object.defineProperty(window, "wispcraftAPI", {
-  value: {
-		showSettingsUI: showUI
-	},
-  writable: false
-});
 
 // replace websocket with our own
 window.WebSocket = makeFakeWebSocket();
